@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
     title: "Blog posts"
 }
-import '../blog/blog.css';
+import './blog.scss';
 import getAllPosts from "../../lib/getAllPosts";
 
 export default function Blog({data}: {data: any}) {
