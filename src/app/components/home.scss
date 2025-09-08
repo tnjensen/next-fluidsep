@@ -36,6 +36,10 @@
             @include large {
                 margin: 90px 0 0 0;
             }
+
+            @media screen and (orientation: landscape){
+                margin: 40px 0 0 20px;
+            }
         }
 
         .read-more-btn {
@@ -43,6 +47,7 @@
             font-weight: 600;
             letter-spacing: .05rem;
             cursor: pointer;
+            width: 160px;
             padding: 15px 20px;
             border-radius: 5px 5px 0 0;
             border: none;
@@ -50,31 +55,55 @@
             color: var(--blue);
             text-transform: uppercase;
             text-decoration: none;
-            /* position: absolute;
-            top: 90%;
+            position: absolute;
+            top: 35%;
             transform: translateY(-50%);
-            left: 35%; */
+            left: 120px;
 
-            @include desktop {
-                left: 20%;
+            @include mobile{
+                left: 150px;
+                top: 200px;
             }
-
-            &:hover {
-                color: var(--light-grey);
-                background-color: var(--blue);
-            }
-
+            
             @include tablet {
+                width: 200px;
+                left: 200px;
+                top: 220px;
                 padding: 20px 30px;
                 font-size: 20px;
             }
 
+            @media screen and (orientation: landscape) {
+                top: 160px;
+            }
             @include desktop {
+                width: 240px;
+                padding: 20px 35px;
+                top: 230px;
                 font-size: 22px;
+                left: 250px;
+            }
+
+            @include large{
+                width: 240px;
+                left: 300px;
+            }
+
+            @include wide{
+                left: 200px;
+            }
+            @media screen and (min-width:1600px){
+                left: 35%;
+                padding: 25px 40px;                
+            }
+            &:hover {
+                color: var(--light-grey);
+                background-color: var(--blue);
             }
         }
 
         .img-attr {
+            display: block;
             flex: 0 0 100%;
             position: absolute;
             bottom: 15px;

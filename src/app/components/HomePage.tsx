@@ -9,7 +9,7 @@ export default function HomePage() {
 
   return (
     <div className='home'>
-      <div className='home-content container'>
+      <div className='home-content'>
         <h1>Downhole Processing <span>Plant</span></h1>
         <button><Link href={"/about"} className='read-more-btn'>Read more</Link></button>
 
