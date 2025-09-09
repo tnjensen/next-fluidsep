@@ -2,7 +2,7 @@
 import type { Metadata } from "next";
 import "./globals.scss";
 import Footer from "./components/Footer";
-import Header1 from "./components/Header";
+import Header from "./components/Header";
 
 export const metadata: Metadata = {
   title: "Fluidsep Next App",
@@ -19,7 +19,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <div className="wrapper">
-         <Header1 />
+         <Header />
           <div>
             {children}
           </div>

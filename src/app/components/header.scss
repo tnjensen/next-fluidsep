@@ -1,0 +1,74 @@
+@import "../globals.scss";
+
+header {
+    position: relative;
+
+    img{
+        width: 300px;
+        height: 200px;
+        height: auto;
+        display: block;
+        padding: 10px;
+
+        @include tablet {
+            width: 400px;
+            height: auto;
+        }
+    }
+
+    .header-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1160px;
+        margin: 0 auto;
+    }
+
+    #menu-button {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        z-index: 1000;
+
+        @include tablet {
+            display: none;
+
+        }
+    }
+
+    .dropdown{
+        position: absolute;
+        top: 20%;
+        right: 10%;
+        width: 50%;
+    }
+    .dropdown ul {
+        list-style: none;
+        
+
+        li {
+            padding-bottom: 10px;
+
+            a {
+                text-decoration: none;
+            }
+        }
+    }
+
+    .visible ul {
+        display: none;
+    }
+
+    @include tablet {
+
+        .visible ul {
+            display: flex;
+            gap: 10px;
+            list-style: none;
+
+            li a {
+                text-decoration: none;
+            }
+        }
+    }
+}

@@ -4,6 +4,7 @@ import { usePathname } from "next/navigation";
 import { useState, useRef } from "react";
 import { FaBars } from "react-icons/fa";
 import DropdownMenu from "./DropdownMenu";
+import './header.scss';
 import { useOutsideClick } from "../hooks/useOutsideClick";
 import Link from "next/link";
 
