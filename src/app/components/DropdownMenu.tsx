@@ -6,8 +6,8 @@ export default function DropdownMenu() {
     const path = usePathname();
 
     return (
-        <nav className="absolute top-12 right-4 z-50 bg-[var(--white)] border border-[var(--light-grey)] rounded-md p-4">
-            <ul className="flex-col">
+        <nav className="absolute top-12 right-10 z-50 bg-[var(--white)] border border-[var(--light-grey)] rounded-md py-2 px-6">
+            <ul className="flex-col float-right">
                 <li className="py-1">
                     <a href="/" className={path === "/" ? "active" : ""}>
                         Home
