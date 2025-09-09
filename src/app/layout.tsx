@@ -2,7 +2,7 @@
 import type { Metadata } from "next";
 import "./globals.scss";
 import Footer from "./components/Footer";
-import Header1 from "./components/Header1";
+import Header1 from "./components/Header";
 
 export const metadata: Metadata = {
   title: "Fluidsep Next App",
