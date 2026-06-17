@@ -1,5 +1,7 @@
 
 import type { Metadata } from "next";
+// Ignore missing type declarations for SCSS side-effect import
+// @ts-ignore
 import "./globals.scss";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
@@ -18,11 +20,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+        <Header />
         <div className="wrapper">
-         <Header />
-          <div>
             {children}
-          </div>
         </div>
         <Footer />
       </body>

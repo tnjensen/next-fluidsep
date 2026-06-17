@@ -1,6 +1,7 @@
 "use client"
 
 import Link from "next/link";
+// @ts-ignore: Allow side-effect import of SCSS without type declarations
 import './home.scss'
 import { usePathname } from "next/navigation";
 

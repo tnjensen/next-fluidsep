@@ -4,6 +4,7 @@ import { usePathname } from "next/navigation";
 import { useState, useRef } from "react";
 import { FaBars } from "react-icons/fa";
 import DropdownMenu from "./DropdownMenu";
+// @ts-ignore: SCSS side-effect import declaration handled by build setup
 import './header.scss';
 import { useOutsideClick } from "../hooks/useOutsideClick";
 import Link from "next/link";
@@ -35,31 +36,31 @@ export default function Header() {
                         <DropdownMenu />
                     </div>
                 ) : (
-                <nav className="flex justify-center place-items-center">
-                    <ul className="sm:flex hidden gap-2 justify-center mt-12 mb-4 mr-2 sm:mt-1 align-center">
-                        <li className="py-1">
-                            <Link href="/" className={path === "/" ? "active" : ""}>
-                                Home
-                            </Link>
-                        </li>
-                        <li className="py-1">
-                            <Link href="/about" className={path === "/about/" ? "active" : ""}>
-                                About
-                            </Link>
-                        </li>
-                        <li className="py-1">
-                            <Link href="/contact" className={path === "/contact/" ? "active" : ""}>
-                                Contact
-                            </Link>
-                        </li>
-                        <li className="py-1">
-                            <Link href="/blog" className={path === "/blog/" ? "active" : ""}>
-                                Blog
-                            </Link>
-                        </li>
-                    </ul>
-                </nav>
-            )}
+                    <nav className="flex justify-center place-items-center">
+                        <ul className="sm:flex hidden gap-2 justify-center mt-12 mb-4 mr-2 sm:mt-1 align-center">
+                            <li className="py-1">
+                                <Link href="/" className={path === "/" ? "active" : ""}>
+                                    Home
+                                </Link>
+                            </li>
+                            <li className="py-1">
+                                <Link href="/about" className={path === "/about/" ? "active" : ""}>
+                                    About
+                                </Link>
+                            </li>
+                            <li className="py-1">
+                                <Link href="/contact" className={path === "/contact/" ? "active" : ""}>
+                                    Contact
+                                </Link>
+                            </li>
+                            <li className="py-1">
+                                <Link href="/blog" className={path === "/blog/" ? "active" : ""}>
+                                    Blog
+                                </Link>
+                            </li>
+                        </ul>
+                    </nav>
+                )}
             </div>
         </header>
     );
