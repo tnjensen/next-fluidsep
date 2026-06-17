@@ -62,6 +62,13 @@
             padding: 20px;
             display: flex;
             flex-direction: column;   
+        }
+        .location a{
+            font-weight: 600;
+
+            &:hover{
+                text-decoration: underline;
+            }
         }    
     }
     .contact-content > p{
