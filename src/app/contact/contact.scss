@@ -43,6 +43,13 @@
         line-height: 2rem;
         margin-top: 15px;
  
+        .details a{
+            font-weight: 600;
+
+            &:hover{
+                text-decoration: underline;
+            }
+        }
         .map1 img {
             margin-top: 20px;
 

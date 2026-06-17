@@ -17,7 +17,7 @@ export default function Contact() {
         </div>
       </div>
       <main className="contact-content" >
-        <p className=''>Email: <Link href="mailto:info@fluidsep.com">info@fluidsep.com</Link><br />
+        <p className='details'>Email: <Link href="mailto:info@fluidsep.com">info@fluidsep.com</Link><br />
           Mobile: +47 930 28 690</p>
         <div className='location'>
           <p>Find our office:</p>
