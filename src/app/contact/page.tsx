@@ -23,12 +23,12 @@ export default function Contact() {
             <p className='details'>Email: <Link href="mailto:info@fluidsep.com">info@fluidsep.com</Link><br />
               Mobile: +47 930 28 690</p>
           </div>
-          <div className='contact-form'>
+          {/* <div className='contact-form'>
             <h2>Send us a message</h2>
             <div>
               <ContactForm />
             </div>
-          </div>
+          </div> */}
         </div>
         <div className='location'>
           <p>Find our office:</p>
