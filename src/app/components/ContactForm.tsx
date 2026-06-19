@@ -75,7 +75,7 @@ const Contacts: FC = () => {
         )}
       </div>
       <div>
-        <button className='hover:shadow-form rounded-md bg-[var(--light-grey)] py-2 px-8 font-semibold uppercase text-[var(--blue)] outline-none hover:bg-[var(--light-blue)] hover:text-[var(--blue)]'>
+        <button className='hover:shadow-form rounded-md bg-[var(--blue)] py-2 px-8 font-semibold uppercase text-white outline-none hover:bg-[var(--light-blue)]'>
           Send
         </button>
         {/* <Button
