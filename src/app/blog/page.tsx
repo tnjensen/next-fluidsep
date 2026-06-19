@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "Blog posts"
+  title: "Blog posts"
 }
 import './blog.scss'
 import getAllPosts from "../../../lib/getAllPosts";
@@ -14,17 +14,17 @@ export default async function Blog() {
   return (
     <div className='blog'>
       <div className="blog-heading">
-                {/* <h1>Blog</h1> */}
-            </div>
-            <div className="loader loading-indicator"></div>
-            {/* @ts-expect-error - expected */}
-            {data && data.map((item) => (
-                <div className="card" key={item.id}>
-                <h2 dangerouslySetInnerHTML={{__html: item.title.rendered}} className="text-2xl"></h2>
-                {item._embedded && <img src={item?._embedded['wp:featuredmedia'][0]?.source_url} alt={item?._embedded['wp:featuredmedia'][0]?.alt_text} width={300} height={500} /> }
-                <span dangerouslySetInnerHTML={{__html: item.content.rendered}}></span>
-                </div>
-            ))}
+        {/* <h1>Blog</h1> */}
+      </div>
+      <div className="loader loading-indicator"></div>
+      {/* @ts-expect-error - expected */}
+      {data && data.map((item) => (
+        <div className="card" key={item.id}>
+          <h2 dangerouslySetInnerHTML={{ __html: item.title.rendered }} className="text-2xl text-center"></h2>
+          {item._embedded && <img src={item?._embedded['wp:featuredmedia'][0]?.source_url} alt={item?._embedded['wp:featuredmedia'][0]?.alt_text} width={600} height="auto" />}
+          <span dangerouslySetInnerHTML={{ __html: item.content.rendered }}></span>
+        </div>
+      ))}
     </div>
   )
 }

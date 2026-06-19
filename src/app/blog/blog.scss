@@ -1,3 +1,5 @@
+@import '../globals.scss';
+
 .blog{
     display: flex;
     flex-direction: column;
@@ -6,7 +8,16 @@
 
     img{
         padding: 20px 0;
-        width: 50vw;
+        
+        @include tablet{
+            width: 40vw;
+        }
+        @include desktop{
+            width: 35vw;
+        }
+    }
+    .card{
+        margin-bottom: 2rem;
     }
 } 
 .img-attr{
