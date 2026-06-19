@@ -47,13 +47,15 @@
         margin-top: 15px;
 
         @include tablet {
-            flex-direction: row;
-            justify-content: space-around;
+            /* flex-direction: row;
+            justify-content: space-around; */
         }
 
-        .contact-details>p {
+        .contact-details {
             background-color: var(--background-color);
-            width: 100%;
+            min-width: 50%;
+            margin: 0 auto;
+            text-align: center;
             padding: 15px 25px;
             border-radius: 6px;
         }
