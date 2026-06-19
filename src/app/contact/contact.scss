@@ -1,81 +1,104 @@
 @import '../globals.scss';
 
-.contact{
-    .wrap{
-        max-width: 1440px;
+.contact {
+    .wrap {
+        max-width: 1280px;
         margin: 0 auto;
-          
-        .hero{
+
+        .hero {
             background-image: url("/images/bg_bubbles.jpg");
             height: 150px;
             width: 100%;
-            background-position: center right; 
+            background-position: center right;
             background-repeat: no-repeat;
-            background-size: cover; 
-            
-            @include tablet{
+            background-size: cover;
+
+            @include tablet {
                 height: 200px;
             }
-            
-            h1{
+
+            h1 {
                 position: relative;
                 top: 50%;
                 transform: translateY(-50%);
                 padding-left: 40px;
                 font-size: 1.6rem;
 
-                @include tablet{
+                @include tablet {
                     padding-left: 40px;
                     font-size: 2.4rem;
                 }
-                @include desktop{
+
+                @include desktop {
                     padding-left: 40px;
                 }
-                
+
             }
         }
     }
-    .contact-content{
+
+    .contact-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 20px;
+        padding: 20px;
+        line-height: 2rem;
+        margin-top: 15px;
+
+        @include tablet {
+            flex-direction: row;
+            justify-content: space-around;
+        }
+
+        .contact-details>p {
+            background-color: var(--background-color);
+            width: 100%;
+            padding: 15px 25px;
+            border-radius: 6px;
+        }
+
+        .contact-details a {
+            font-weight: 600;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+
+        .contact-form h2 {
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
+    }
+
+    .map1 img {
+        margin-top: 20px;
+
+        @include tablet {
+            width: 450px;
+            height: auto;
+        }
+    }
+
+    .location {
+        padding: 20px;
         display: flex;
         flex-direction: column;
         align-items: center;
-        padding: 20px 0;
-        line-height: 2rem;
-        margin-top: 15px;
- 
-        .details a{
-            font-weight: 600;
+        margin-bottom: 40px;
 
-            &:hover{
-                text-decoration: underline;
-            }
+        @include desktop{
+            align-items: flex-start;
+            margin-left: 15%;
         }
-        .map1 img {
-            margin-top: 20px;
-
-            @include tablet{
-                width: 450px;
-                height: auto;
-            }
-        }
-        .location{
-            padding: 20px;
-            display: flex;
-            flex-direction: column;   
-        }
-        .location a{
-            font-weight: 600;
-
-            &:hover{
-                text-decoration: underline;
-            }
-        }    
     }
-    .contact-content > p{
-        background-color: var(--background-color);
-        width: 50%;
-        padding: 15px 25px;
-        border-radius: 6px;
-        text-align: center;
+
+    .location a {
+        font-weight: 600;
+
+        &:hover {
+            text-decoration: underline;
+        }
     }
 }
