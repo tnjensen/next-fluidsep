@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Blog posts"
 }
+// @ts-ignore: Ignore missing type declarations for SCSS side-effect import
 import './blog.scss'
 import getAllPosts from "../../../lib/getAllPosts";
 

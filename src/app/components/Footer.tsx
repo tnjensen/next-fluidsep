@@ -1,6 +1,7 @@
 "use client"
 import Link from "next/link";
 import { FaFacebook, FaInstagram, FaLinkedin } from "react-icons/fa";
+// @ts-ignore: Ignore missing type declarations for SCSS side-effect import
 import './footer.scss'
 import { usePathname } from "next/navigation";
 

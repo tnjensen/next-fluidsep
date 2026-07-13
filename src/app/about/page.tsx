@@ -1,3 +1,4 @@
+// @ts-ignore: Ignore missing type declarations for SCSS side-effect import
 import './about.scss'
 import type { Metadata } from "next";
 
