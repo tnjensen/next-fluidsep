@@ -8,6 +8,7 @@ import './blog.scss'
 import getAllPosts from "../../../lib/getAllPosts";
 
 export default async function Blog() {
+  
   const postData = getAllPosts()
   const data = await postData
 
