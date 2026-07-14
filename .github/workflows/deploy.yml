@@ -42,15 +42,30 @@ jobs:
           port: 22
           script: |
             cd /var/www/fluidsep.com
-            
-            # Last inn full Node.js-miljø (nødvendig for at kommandoer skal finnes over SSH)
+      - name: Add host key to known_hosts (forced KEX)
+        run: |
+          mkdir -p ~/.ssh
+          ssh-keyscan -p 22 -t ed25519 \
+            -o KexAlgorithms=curve25519-sha256 \
+            46.250.220.244 >> ~/.ssh/known_hosts
+
+      - name: SSH Remote Commands for PM2 (build & restart)
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: 22
+          script: |
+            cd /var/www/fluidsep.com
+            # Load full Node.js environment (necessary so commands exist over SSH)
             export NVM_DIR="$HOME/.nvm"
-            [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-            
-            # Installer pakker og bygg appen på serveren
+            [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+
+            # Install packages and build the app on the server
             npm install
             npm run build
-            
-            # Last inn Next.js på nytt uten nedetid via PM2
+
+            # Reload Next.js without downtime via PM2
             pm2 reload fluidsep-app || pm2 start npm --name "fluidsep-app" -- start
             pm2 save
