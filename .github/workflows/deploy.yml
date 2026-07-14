@@ -26,7 +26,6 @@ jobs:
             --exclude='node_modules' \
             --exclude='.next' \
             -e "ssh -p 22" \
-            #./ ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }}:${{ secrets.DEPLOY_PATH }}
             ./ tnjensen@46.250.220.244:/var/www/fluidsep.com
 
       - name: SSH Remote Commands for PM2 (SSH uses SERVER_HOST)
