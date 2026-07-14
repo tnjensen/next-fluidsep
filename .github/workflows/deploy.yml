@@ -31,23 +31,16 @@ jobs:
 
             cat ~/.ssh/known_hosts
 
-            rsync -avzr --delete \
+           
+
+      - name: Deploy files via rsync (SSH uses SERVER_HOST)
+        run: |
+           rsync -avzr --delete \
             --exclude='.git*' \
             --exclude='.github*' \
             --exclude='node_modules' \
             --exclude='.next' \
             -e "ssh -p 22 -o UserKnownHostsFile=~/.ssh/known_hosts -o StrictHostKeyChecking=yes" \
-            ./ tnjensen@46.250.220.244:/var/www/fluidsep.com
-
-
-      - name: Deploy files via rsync (SSH uses SERVER_HOST)
-        run: |
-          rsync -avzr --delete \
-            --exclude='.git*' \
-            --exclude='.github*' \
-            --exclude='node_modules' \
-            --exclude='.next' \
-            -e "ssh -p 22" \
             ./ tnjensen@46.250.220.244:/var/www/fluidsep.com
 
       - name: SSH Remote Commands for PM2 (SSH uses SERVER_HOST)
