@@ -18,10 +18,27 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           known_hosts: ${{ secrets.KNOWN_HOSTS }}
       
+            set -e
+
             mkdir -p ~/.ssh
-            ssh-keygen -R 46.250.220.244 || true
-            ssh-keyscan -H 46.250.220.244 >> ~/.ssh/known_hosts
+            chmod 700 ~/.ssh
+
+            ssh-keygen -R 46.250.220.244 -f ~/.ssh/known_hosts >/dev/null 2>&1 || true
+
+            ssh-keyscan -H 46.250.220.244 -p 22 >> ~/.ssh/known_hosts
+
             chmod 600 ~/.ssh/known_hosts
+
+            cat ~/.ssh/known_hosts
+
+            rsync -avzr --delete \
+            --exclude='.git*' \
+            --exclude='.github*' \
+            --exclude='node_modules' \
+            --exclude='.next' \
+            -e "ssh -p 22 -o UserKnownHostsFile=~/.ssh/known_hosts -o StrictHostKeyChecking=yes" \
+            ./ tnjensen@46.250.220.244:/var/www/fluidsep.com
+
 
       - name: Deploy files via rsync (SSH uses SERVER_HOST)
         run: |
