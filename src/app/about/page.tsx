@@ -3,6 +3,7 @@ import './about.scss'
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
+  
     title: "Fluidsep - About"
 }
 export default function About() {
