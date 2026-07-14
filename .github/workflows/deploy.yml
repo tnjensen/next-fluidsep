@@ -21,6 +21,12 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           known_hosts: ${{ secrets.KNOWN_HOSTS }}
 
+      - name: Add host key to known_hosts (forced KEX)
+        run: |
+          mkdir -p ~/.ssh
+          ssh-keyscan -p 22 -t ed25519 \
+           -o KexAlgorithms=ecdh-sha2-nistp256 \
+            46.250.220.244 >> ~/.ssh/known_hosts
       # 3. Synkroniserer kildekoden til serveren (ekskluderer unødvendige filer)
       - name: Deploy files via rsync
         run: |
@@ -42,12 +48,6 @@ jobs:
           port: 22
           script: |
             cd /var/www/fluidsep.com
-      - name: Add host key to known_hosts (forced KEX)
-        run: |
-          mkdir -p ~/.ssh
-          ssh-keyscan -p 22 -t ed25519 \
-            -o KexAlgorithms=curve25519-sha256 \
-            46.250.220.244 >> ~/.ssh/known_hosts
 
       - name: SSH Remote Commands for PM2 (build & restart)
         uses: appleboy/ssh-action@v1.0.3
