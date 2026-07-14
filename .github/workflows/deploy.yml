@@ -25,13 +25,11 @@ jobs:
 
             ssh-keygen -R 46.250.220.244 -f ~/.ssh/known_hosts >/dev/null 2>&1 || true
 
-            ssh-keyscan -H 46.250.220.244 -p 22 >> ~/.ssh/known_hosts
+            ssh-keyscan -p 22 -t ed25519 -H 46.250.220.244 >> ~/.ssh/known_hosts
+            ssh-keyscan -p 22 -H 46.250.220.244 >> ~/.ssh/known_hosts
 
             chmod 600 ~/.ssh/known_hosts
-
-            cat ~/.ssh/known_hosts
-
-           
+            cat ~/.ssh/known_hosts       
 
       - name: Deploy files via rsync (SSH uses SERVER_HOST)
         run: |
