@@ -18,32 +18,32 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           known_hosts: ${{ secrets.KNOWN_HOSTS }}
       
-              set -euxo pipefail
+      - name: Prepare known_hosts
+        run: |
+          set -euxo pipefail
 
-              mkdir -p ~/.ssh
-              chmod 700 ~/.ssh
-            : > 
-              ~/.ssh/known_hosts
-              chmod 600 ~/.ssh/known_hosts
+          mkdir -p ~/.ssh
+          chmod 700 ~/.ssh
+          : > ~/.ssh/known_hosts
+          chmod 600 ~/.ssh/known_hosts
 
-              ssh-keyscan -p 22 -t ed25519 -H 46.250.220.244 >> ~/.ssh/known_hosts 2>/dev/null
-              ssh-keyscan -p 22 -t rsa -H 46.250.220.244 >> ~/.ssh/known_hosts 2>/dev/null
-              ssh-keyscan -p 22 -t ecdsa -H 46.250.220.244 >> ~/.ssh/known_hosts 2>/dev/null
+          ssh-keyscan -p 22 -t ed25519 -H 46.250.220.244 >> ~/.ssh/known_hosts 2>/dev/null
+          ssh-keyscan -p 22 -t rsa -H 46.250.220.244 >> ~/.ssh/known_hosts 2>/dev/null
+          ssh-keyscan -p 22 -t ecdsa -H 46.250.220.244 >> ~/.ssh/known_hosts 2>/dev/null
 
-              echo "=== known_hosts ==="
-              cat ~/.ssh/known_hosts
+          echo "=== known_hosts ==="
+          cat ~/.ssh/known_hosts
 
-              echo "=== matching lines (ed25519) ==="
-              grep -n "46\.250\.220\.244" ~/.ssh/known_hosts || true
-              grep -n "ed25519" ~/.ssh/known_hosts || true
+          echo "=== matching lines (ed25519) ==="
+          grep -n "46\\.250\\.220\\.244" ~/.ssh/known_hosts || true
+          grep -n "ed25519" ~/.ssh/known_hosts || true
 
-              echo "=== test ssh hostkey lookup ==="
-              ssh -p 22 \
-                -o UserKnownHostsFile=~/.ssh/known_hosts \
-                -o StrictHostKeyChecking=yes \
-                -o HostKeyAlgorithms=+ssh-ed25519 \
-                tnjensen@46.250.220.244 'echo SSH_OK'
-              ***
+          echo "=== test ssh hostkey lookup ==="
+          ssh -p 22 \
+            -o UserKnownHostsFile=~/.ssh/known_hosts \
+            -o StrictHostKeyChecking=yes \
+            -o HostKeyAlgorithms=+ssh-ed25519 \
+            tnjensen@46.250.220.244 'echo SSH_OK'
 
       - name: Deploy files via rsync (SSH uses SERVER_HOST)
         run: |
