@@ -17,7 +17,11 @@ jobs:
         with:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           known_hosts: ${{ secrets.KNOWN_HOSTS }}
-
+      - name: Add VPS to known_hosts
+        run: |
+          mkdir -p ~/.ssh
+          ssh-keyscan -p 22 -H "${{ secrets.SERVER_HOST }}" >> ~/.ssh/known_hosts
+          chmod 600 ~/.ssh/known_hosts
       - name: Deploy files via rsync (SSH uses SERVER_HOST)
         run: |
           rsync -avzr --delete \
@@ -26,7 +30,7 @@ jobs:
             --exclude='node_modules' \
             --exclude='.next' \
             -e "ssh -p 22" \
-            ./ tnjensen@46.250.220.244:/var/www/fluidsep.com
+            ./ ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }}:${{ secrets.DEPLOY_PATH }}
 
       - name: SSH Remote Commands for PM2 (SSH uses SERVER_HOST)
         uses: appleboy/ssh-action@v1.0.3
