@@ -51,5 +51,9 @@ jobs:
 
             export PORT=3001
 
-            pm2 reload fluidsep-app || pm2 start npm --name "fluidsep-app" -- start
+            if pm2 describe fluidsep-app >/dev/null; then
+            pm2 reload fluidsep-app
+            else
+            pm2 start npm --name "fluidsep-app" -- start
+            fi
             pm2 save
