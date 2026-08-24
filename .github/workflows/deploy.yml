@@ -18,6 +18,9 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           known_hosts: ${{ secrets.KNOWN_HOSTS }}
       
+      - name: Check GitHub Actions IP
+        run: curl -s https://api.ipify.org
+      
       - name: Add VPS to known_hosts
         run: |
           mkdir -p ~/.ssh
