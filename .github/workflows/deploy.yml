@@ -17,8 +17,10 @@ jobs:
         with:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           known_hosts: ${{ secrets.KNOWN_HOSTS }}
-      
-      - name: Deploy files via rsync (SSH uses SERVER_HOST)
+      - name: Check GitHub Actions IP
+        run: curl -s https://api.ipify.org
+
+        - name: Deploy files via rsync (SSH uses SERVER_HOST)
         run: |
           rsync -avzr --delete \
             --exclude='.git*' \
