@@ -11,6 +11,7 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+      
       - name: Add VPS to known_hosts
         run: |
           mkdir -p ~/.ssh
