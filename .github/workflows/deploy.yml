@@ -12,9 +12,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Check GitHub Actions IP
-        run: curl -s https://api.ipify.org
-      
       - name: Deploy files via rsync (SSH uses SERVER_HOST)
         run: |
           rsync -avzr --delete \
