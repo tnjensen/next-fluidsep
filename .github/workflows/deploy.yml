@@ -15,12 +15,6 @@ jobs:
       - name: Check GitHub Actions IP
         run: curl -s https://api.ipify.org
       
-      - name: Add VPS to known_hosts
-        run: |
-          mkdir -p ~/.ssh
-          ssh-keyscan -p 22 -H "${{ secrets.SERVER_HOST }}" >> ~/.ssh/known_hosts
-          chmod 600 ~/.ssh/known_hosts
-      
       - name: Deploy files via rsync (SSH uses SERVER_HOST)
         run: |
           rsync -avzr --delete \
