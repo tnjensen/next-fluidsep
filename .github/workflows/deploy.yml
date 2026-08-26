@@ -53,7 +53,7 @@ jobs:
             npm install --legacy-peer-deps
             npm run build
 
-            export PORT=3001
+            export PORT=3000
 
             if pm2 describe fluidsep-app >/dev/null; then
             pm2 reload fluidsep-app
