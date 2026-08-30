@@ -55,10 +55,10 @@ jobs:
 
             export PORT=3000
 
-            if pm2 describe fluidsep-app >/dev/null; then
-            pm2 reload fluidsep-app
+            if pm2 describe fluidsep >/dev/null; then
+            pm2 reload fluidsep
             else
-            pm2 start npm --name "fluidsep-app" -- start
+            pm2 start npm --name "fluidsep" -- start
             fi
             pm2 save
 
